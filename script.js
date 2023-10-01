@@ -45,6 +45,7 @@ form.addEventListener('submit',(e) => {
     checkAnswer(num);
     displayGuesses();
     displayAttempts();
+    document.getElementById('numberInput').value = '';
   } else {
     checkAnswer(num);
   }
