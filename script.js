@@ -13,8 +13,7 @@ function getRandomInt(){
 }
 
 function checkAnswer(num) {
-  
-  if(num in guesses && attempts > 0){
+  if(randomNumber == num && attempts > 0){
     window.alert('Correct!!');
     flag = 1;
     document.querySelector('.correctNum').innerHTML = `The correct answer is ${num}`;
@@ -25,6 +24,7 @@ function checkAnswer(num) {
   if(attempts === 0 && flag === 0){
     window.alert('Attempts over, better luck next time!!');
     document.querySelector('.correctNum').innerHTML = `The correct answer is ${randomNumber}`;
+    document.getElementById('numberInput').disabled = true;
   }
 }
 
@@ -44,7 +44,10 @@ const randomNumber = getRandomInt();
 form.addEventListener('submit',(e) => {
   e.preventDefault();
   let num = document.getElementById('numberInput').value;
-  if(attempts > 0){
+  num = parseInt(num)
+  if (isNaN(num) || num < 1 || num > 10) {
+    window.alert('Please enter a valid number between 1 and 10.');
+  } else if(attempts > 0){
     storeGuess(num);
     checkAnswer(num);
     displayGuesses();
@@ -52,5 +55,6 @@ form.addEventListener('submit',(e) => {
     document.getElementById('numberInput').value = '';
   } 
 })
+
 
 
