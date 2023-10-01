@@ -1,5 +1,6 @@
 let attempts = 3;
 let guesses = [];
+let flag = 0;
 
 const form = document.querySelector('.form');
 
@@ -12,15 +13,18 @@ function getRandomInt(){
 }
 
 function checkAnswer(num) {
-  attempts--;
+  
   if(num in guesses && attempts > 0){
     window.alert('Correct!!');
+    flag = 1;
     document.querySelector('.correctNum').innerHTML = `The correct answer is ${num}`;
   } else if(attempts > 0)  {
     window.alert('Incorrect! Try again');
-  } else {
+  } 
+  attempts--;
+  if(attempts === 0 && flag === 0){
     window.alert('Attempts over, better luck next time!!');
-    document.querySelector('.correctNum').innerHTML = `The correct answer is ${num}`;
+    document.querySelector('.correctNum').innerHTML = `The correct answer is ${randomNumber}`;
   }
 }
 
@@ -46,9 +50,7 @@ form.addEventListener('submit',(e) => {
     displayGuesses();
     displayAttempts();
     document.getElementById('numberInput').value = '';
-  } else {
-    checkAnswer(num);
-  }
+  } 
 })
 
 
