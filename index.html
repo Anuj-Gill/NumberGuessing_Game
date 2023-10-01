@@ -4,8 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
+  <h3>Number Guessing Game</h3>
+  <h4>Try and guess a random number between 1 and 10.</h4>
+  <h4>You have 3 attempts to guess the right number.</h4>
+  <br>
+  <h1>Guess a number</h1>
+  <form class="form">
+    <input type="number"  id="numberInput">
+    <input type="submit" id="submit" value="Check">
+
+  </form>
+  <h4 class="guesses"></h4>
+  <h4 class="attempts">Attempts left: 3</h4>
+  <h4 class="correctNum"></h4>
+
+  <script src="script.js"></script>
 </body>
 </html>
